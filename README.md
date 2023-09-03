@@ -1,58 +1,67 @@
+# Amazon Kinesis Data Stream trigger AWS Lambda function with CDK
 
-# Welcome to your CDK Python project!
+This pattern creates a Kinesis Data Stream that is added as an event source to AWS Lambda function.
 
-This is a blank project for CDK development with Python.
+Learn more about this pattern at Serverless Land Patterns: <url TBD>
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+Important: This application uses various AWS services and there are costs associated with these services after the Free Tier usage. Please see the [AWS Pricing page](https://aws.amazon.com/pricing/) for details. You are responsible for any AWS costs incurred. No warranty is implied in this example.
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+## Requirements
 
-To manually create a virtualenv on MacOS and Linux:
+- [Create an AWS account](https://portal.aws.amazon.com/gp/aws/developer/registration/index.html) if you do not already have one and log in. The IAM user that you use must have sufficient permissions to make necessary AWS service calls and manage AWS resources.
+- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) installed and configured
+- [Git Installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [AWS Cloud Development Kit (AWS CDK)](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html) (AWS CDK >= 2.1.0) installed
+
+
+## Deployment Instructions
+
+1. Create a new directory, navigate to that directory in a terminal and clone the GitHub repository:
+   ```
+   git clone https://github.com/aws-samples/serverless-patterns
+   ```
+2. Change directory to the pattern directory:
+   ```
+   cd serverless-patterns/apigw-http-api-eventbridge-python
+   ```
+3. Create a virtual environment for Python:
+   ```
+   python3 -m venv .venv
+   ```
+4. Activate the virtual environment :
+   ```
+   Linux : source .venv/bin/activate
+   Windows : .venv\Scripts\activate.bat
+   ```
+5. Install the Python required dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+6. Review the CloudFormation template the cdk generates for you stack using the following AWS CDK CLI command:
+   ```
+   cdk synth
+   ```
+7. From the command line, use AWS CDK to deploy the AWS resources for the serverless application as specified in the app.py file:
+   ```
+   cdk deploy
+   ```
+8. Note the outputs from the CDK deployment process. These contain the API Gateway ID which is used for testing.
+
+## How it works
+
+This pattern creates a Kinsesis Data stream and a Lambda function. The data stream is then added as an event source which can trigger the Lambda function.
+
+
+## Cleanup
+
+Run the given command to delete the resources that were created. It might take some time for the CloudFormation stack to get deleted.
 
 ```
-$ python3 -m venv .venv
+cdk destroy
 ```
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
+---
 
-```
-$ source .venv/bin/activate
-```
+Copyright 2023 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 
-If you are a Windows platform, you would activate the virtualenv like this:
-
-```
-% .venv\Scripts\activate.bat
-```
-
-Once the virtualenv is activated, you can install the required dependencies.
-
-```
-$ pip install -r requirements.txt
-```
-
-At this point you can now synthesize the CloudFormation template for this code.
-
-```
-$ cdk synth
-```
-
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
-
-## Useful commands
-
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
-
-Enjoy!
+SPDX-License-Identifier: MIT-0
