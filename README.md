@@ -22,7 +22,7 @@ Important: This application uses various AWS services and there are costs associ
    ```
 2. Change directory to the pattern directory:
    ```
-   cd serverless-patterns/apigw-http-api-eventbridge-python
+   cd serverless-patterns/<TBD>
    ```
 3. Create a virtual environment for Python:
    ```
