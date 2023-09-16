@@ -53,7 +53,7 @@ This pattern creates a Kinsesis Data stream and a Lambda function. The data stre
 
 ## Testing
 
-From the command line, run the following command to send a single data record to the Kinesis data stream. Note that you must edit the "<stream_arn>" with the Kinesis data stream ARN that is deployed which will be provided in the stack deployment outputs.
+From the command line, run the following command to send a single data record to the Kinesis data stream. Note that you must edit the <stream_arn> with the Kinesis data stream ARN that is deployed which will be provided in the stack deployment outputs.
 
 ```
 aws kinesis put-record --stream-arn <stream_arn> --partition-key 123 --data testdata
